@@ -1,0 +1,47 @@
+openapi: 3.0.3
+info:
+  title: Simple fastify API
+  description: A simple API built with Fastify.
+  version: '0.0.0'
+  contact:
+    email: lebas.axel@gmail.com
+servers:
+  - url: 'http://localhost:8080'
+    description: Local
+tags:
+  - name: health
+    description: API Health checks
+paths:
+  /health:
+    get:
+      summary: Health check
+      description: Check the health of the API.
+      operationId: health
+      tags:
+        - health
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+components:
+  schemas:
+    Health:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+          description: The status of the API
+          enum:
+            - ok
+        uptime:
+          type: integer
+          format: int64
+          description: The uptime of the API in seconds
+          example: 60
+      required:
+        - status
+        - uptime

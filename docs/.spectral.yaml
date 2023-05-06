@@ -1,0 +1,18 @@
+extends: "spectral:oas"
+rules:
+  examples-mandatory-on-primitive-objects:
+    severity: error
+    description: |
+      This rule ensures that all primitive types have an example value.
+    given: $..[?(@.type == 'string' || @.type == 'number' || @.type == 'integer' || @.type == 'boolean' || @.type == 'null')]
+    then:
+      field: example
+      function: truthy
+  no-examples-on-non-primitives-objects:
+    severity: error
+    description: |
+      This rule ensures that non primitive types do not have an example value.
+    given: $..[?(@.type == 'object' || @.type == 'array')]
+    then:
+      field: example
+      function: falsy

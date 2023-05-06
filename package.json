@@ -1,0 +1,44 @@
+{
+  "name": "fastify-api-design-first",
+  "version": "0.0.0",
+  "description": "A simple fastify API using design-first approach",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "openapi:lint": "spectral lint docs/openapi-spec.yaml --ruleset docs/.spectral.yaml",
+    "openapi:generate-types": "sta -p docs/openapi-spec.yaml -o src/ -n types.ts --silent --no-client",
+    "updates": "npm-check-updates",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist/ && rimraf src/types.ts",
+    "prebuild": "npm run clean && npm run openapi:lint && npm run openapi:generate-types",
+    "build": "tsc -p tsconfig.json",
+    "prestart:dev": "npm run build",
+    "start:dev": "node dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Axel LEBAS",
+    "email": "lebas.axel@gmail.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/swagger": "^8.3.1",
+    "@fastify/swagger-ui": "^1.8.1",
+    "fastify": "^4.17.0",
+    "fastify-openapi-glue": "^4.1.4"
+  },
+  "devDependencies": {
+    "@stoplight/spectral-cli": "^6.6.0",
+    "@types/node": "^20.1.0",
+    "npm-check-updates": "^16.10.10",
+    "rimraf": "^5.0.0",
+    "swagger-typescript-api": "^12.0.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "volta": {
+    "node": "20.1.0",
+    "npm": "9.6.4"
+  }
+}
