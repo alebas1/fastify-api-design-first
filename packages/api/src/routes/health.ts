@@ -1,4 +1,4 @@
-import { Health } from "../types";
+import { Health } from "@app/documentation";
 
 export default {
     health: async (): Promise<Health> => {
