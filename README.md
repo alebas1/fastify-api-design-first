@@ -65,6 +65,48 @@ npm start:api
 
 You can now access the API documentation on http://localhost:8080/docs.
 
+### Use the project
+
+#### Create a new package
+
+```sh
+npm init -w <package-name>
+```
+
+#### Add a dependency to a package
+
+```sh
+npm install <dependency-name> -w <package-name>
+```
+
+Then, refresh the dependencies in the root package:
+
+```sh
+npm install
+```
+
+#### Create a dependency between packages
+
+> TODO: Maybe something better exists?
+
+In the dependent package's `package.json`, add:
+
+```json
+"dependencies": {
+  "<dependence-package-name>": "*"
+}
+```
+
+The `<dependence-package-name>` being the name of the package you want to depend on (use the `name` field of the dependence's `package.json`).
+
+Also update the `tsconfig.base.json` file by adding the path to the dependence package in the `paths` field in `compilerOptions`:
+
+```json
+"paths": {
+  "<dependence-package-name>": ["<relative-path-to-dependence-package>"]
+}
+```
+
 ## More infos
 
 Typescript types/interfaces are generated from the OpenAPI specification using [swagger-typescript-api](https://www.npmjs.com/package/swagger-typescript-api). These types are used in the API implementation as a development aid. They are not used at runtime.
@@ -87,6 +129,8 @@ sequenceDiagram
     end
 ```
 
+> This is done automatically by fastify-openapi-glue. No additional code is required.
+
 And for the outputs (the response payloads the API sends to the user):
 
 ```mermaid
@@ -103,4 +147,10 @@ sequenceDiagram
     end
 ```
 
-This solution gives us the best of both worlds: a typed API implementation and runtime validation of the request and response payloads against a predefined OpenAPI specification.
+> This is done automatically by fastify-openapi-glue. No additional code is required.
+
+> This is purely a development aid and a debugging tool. It is not a security feature. The business logic of the API must validate what it produces.
+
+---
+
+IMO, This solution gives us the best of both worlds: a typed API implementation and runtime validation of the request and response payloads against a predefined OpenAPI specification.
