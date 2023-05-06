@@ -8,15 +8,13 @@
     "strict": true,
     "skipLibCheck": true,
     "moduleResolution": "Node",
-    "rootDir": "src",
-    "outDir": "dist",
-  },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "ts-node": {
-    "esm": true,
-    "transpileOnly": true,
-    "files": true,
-  },
+    "paths": {
+      "@app/documentation": [
+        "./packages/documentation"
+      ],
+      "@app/api": [
+        "./packages/api"
+      ],
+    }
+  }
 }

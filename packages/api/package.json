@@ -1,0 +1,27 @@
+{
+    "name": "@app/api",
+    "version:": "0.0.0",
+    "main": "dist/index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "clean": "rimraf dist",
+        "prebuild": "npm run clean",
+        "build": "tsc -p tsconfig.json",
+        "prestart:dev": "npm run build",
+        "start:dev": "node dist/index.js",
+        "start": "node dist/index.js"
+    },
+    "dependencies": {
+        "@fastify/swagger": "^8.3.1",
+        "@fastify/swagger-ui": "^1.8.1",
+        "fastify": "^4.17.0",
+        "fastify-openapi-glue": "^4.1.4",
+        "@app/documentation": "*"
+    },
+    "devDependencies": {
+        "@types/node": "^20.1.0",
+        "typescript": "^5.0.4",
+        "rimraf": "^5.0.0"
+    }
+}
