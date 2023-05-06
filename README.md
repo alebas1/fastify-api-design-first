@@ -151,6 +151,4 @@ sequenceDiagram
 
 > This is purely a development aid and a debugging tool. It is not a security feature. The business logic of the API must validate what it produces.
 
----
-
 IMO, This solution gives us the best of both worlds: a typed API implementation and runtime validation of the request and response payloads against a predefined OpenAPI specification.
