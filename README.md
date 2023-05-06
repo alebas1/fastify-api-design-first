@@ -71,4 +71,36 @@ Typescript types/interfaces are generated from the OpenAPI specification using [
 
 However, [fastify-openapi-glue](https://www.npmjs.com/package/fastify-openapi-glue) is used to validate the request and response payloads against the OpenAPI specification at runtime.
 
-Giving us the best of both worlds: a typed API implementation and runtime validation of the request and response payloads against a predefined OpenAPI specification.
+For the inputs (the request payloads the user sends to the API):
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant API
+    User->>API: Sends input payload
+    API->>API: Validates input using openAPI specification
+    alt Input is invalid
+        API-->>User: Returns 400 error
+    else Input is valid
+        API->>API: Processes input
+        API-->>User: Returns response
+    end
+```
+
+And for the outputs (the response payloads the API sends to the user):
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant API
+    User->>API: Sends request
+    API->>API: Processes request
+    API->>API: Validates output using openAPI specification
+    alt Output is invalid
+        API-->>User: Returns 500 error
+    else Output is valid
+        API-->>User: Returns response
+    end
+```
+
+This solution gives us the best of both worlds: a typed API implementation and runtime validation of the request and response payloads against a predefined OpenAPI specification.
