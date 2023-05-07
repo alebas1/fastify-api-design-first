@@ -8,6 +8,8 @@
   },
   "license": "ISC",
   "scripts": {
+    "clean": "lerna run clean",
+    "clean:deps": "lerna clean --yes",
     "build": "lerna run build",
     "start:api": "lerna run start --scope @app/api"
   },

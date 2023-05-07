@@ -5,6 +5,7 @@
     "type": "module",
     "types": "dist/index.d.ts",
     "scripts": {
+        "clean": "rimraf dist",
         "openapi:lint": "spectral lint ../../docs/openapi-spec.yaml --ruleset ../../docs/.spectral.yaml",
         "openapi:generate-types": "sta -p ../../docs/openapi-spec.yaml -o src -n oasGeneratedTypes.ts --silent --no-client",
         "build:openapi": "npm run openapi:lint && npm run openapi:generate-types",
