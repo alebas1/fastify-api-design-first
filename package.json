@@ -9,7 +9,7 @@
   "license": "ISC",
   "scripts": {
     "clean": "lerna run clean",
-    "clean:deps": "lerna clean --yes",
+    "clean:deps": "lerna clean --yes && rimraf node_modules",
     "build": "lerna run build",
     "start:api": "lerna run start --scope @app/api"
   },
