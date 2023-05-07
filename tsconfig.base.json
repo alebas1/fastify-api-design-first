@@ -9,8 +9,8 @@
     "skipLibCheck": true,
     "moduleResolution": "Node",
     "paths": {
-      "@app/documentation": [
-        "./packages/documentation"
+      "@app/shared-types": [
+        "./packages/shared-types"
       ],
       "@app/api": [
         "./packages/api"

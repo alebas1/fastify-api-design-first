@@ -12,7 +12,10 @@
     "start:api": "lerna run start --scope @app/api"
   },
   "devDependencies": {
-    "lerna": "^6.6.2"
+    "lerna": "^6.6.2",
+    "@types/node": "^20.1.0",
+    "typescript": "^5.0.4",
+    "rimraf": "^5.0.0"
   },
   "volta": {
     "node": "20.1.0",

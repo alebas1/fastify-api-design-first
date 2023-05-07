@@ -15,7 +15,7 @@ const routes = {
 }
 
 const dirName = path.dirname(fileURLToPath(import.meta.url))
-const openApiSpecification = path.join(dirName, '..', '..', 'documentation', 'openapi-spec.yaml');
+const openApiSpecification = path.join(dirName, '..', '..', '..', 'docs', 'openapi-spec.yaml');
 console.log(openApiSpecification)
 
 const swaggerUiOptions: FastifySwaggerUiOptions = {

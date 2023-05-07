@@ -1,0 +1,18 @@
+{
+    "name": "@app/shared-types",
+    "version": "0.0.0",
+    "description": "Types for the project",
+    "type": "module",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "openapi:lint": "spectral lint ../../docs/openapi-spec.yaml --ruleset ../../docs/.spectral.yaml",
+        "openapi:generate-types": "sta -p ../../docs/openapi-spec.yaml -o src -n oasGeneratedTypes.ts --silent --no-client",
+        "build:openapi": "npm run openapi:lint && npm run openapi:generate-types",
+        "build:types": "tsc --declaration --emitDeclarationOnly",
+        "build": "npm run build:openapi && npm run build:types"
+    },
+    "devDependencies": {
+        "swagger-typescript-api": "^12.0.4",
+        "@stoplight/spectral-cli": "^6.6.0"
+    }
+}
