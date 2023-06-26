@@ -3,7 +3,7 @@ import openapiGlue, { FastifyOpenapiGlueOptions } from "fastify-openapi-glue";
 import path from 'path';
 import { fileURLToPath } from "url";
 import swaggerUi, { FastifySwaggerUiOptions } from '@fastify/swagger-ui'
-import swagger, {FastifyStaticSwaggerOptions} from '@fastify/swagger'
+import swagger, { FastifyStaticSwaggerOptions } from '@fastify/swagger'
 import healthRoutes from './routes/health.js'
 
 const server = fastify({
